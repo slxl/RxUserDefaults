@@ -14,10 +14,10 @@ let package = Package(
     .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0"))
   ],
   targets: [
-    .target(name: "RxUserDefaults_iOS", dependencies: ["RxSwift", "RxCocoa"]),
-    .target(name: "RxUserDefaults_tvOS", dependencies: ["RxSwift", "RxCocoa"]),
-    .testTarget(name: "RxUserDefaults-Tests_iOS", dependencies: ["RxUserDefaults_iOS"]),
-    .testTarget(name: "RxUserDefaults-Tests_tvOS", dependencies: ["RxUserDefaults_tvOS"])
+    .target(name: "RxUserDefaults_iOS", dependencies: ["RxSwift", "RxCocoa"], path: "Source"),
+    .target(name: "RxUserDefaults_tvOS", dependencies: ["RxSwift", "RxCocoa"], path: "Source"),
+    .testTarget(name: "RxUserDefaults-Tests_iOS", dependencies: ["RxUserDefaults_iOS"], path: "Tests"),
+    .testTarget(name: "RxUserDefaults-Tests_tvOS", dependencies: ["RxUserDefaults_tvOS"], path: "Tests")
   ],
   swiftLanguageVersions: [.v5]
 )
