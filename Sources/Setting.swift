@@ -16,6 +16,7 @@
 
 import RxSwift
 import RxCocoa
+import Foundation
 
 public protocol StorageLayer {
 

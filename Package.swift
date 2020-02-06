@@ -1,23 +1,35 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.1
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-  name: "RxUserDefaults",
-  platforms: [
-    .iOS(.v10), .tvOS(.v10)
-  ],
-  products: [
-    .library(name: "RxUserDefaults", targets: ["RxUserDefaults"]),
-  ],
-  dependencies: [
-    .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0"))
-  ],
-  targets: [
-    .target(name: "RxUserDefaults_iOS", dependencies: ["RxSwift", "RxCocoa"], path: "Sources"),
-    .target(name: "RxUserDefaults_tvOS", dependencies: ["RxSwift", "RxCocoa"], path: "Sources"),
-    .testTarget(name: "RxUserDefaults-Tests_iOS", dependencies: ["RxUserDefaults_iOS"], path: "Tests"),
-    .testTarget(name: "RxUserDefaults-Tests_tvOS", dependencies: ["RxUserDefaults_tvOS"], path: "Tests")
-  ],
-  swiftLanguageVersions: [.v5]
+    name: "RxUserDefaults",
+    platforms: [
+      .iOS(.v10), .tvOS(.v10)
+    ],
+    products: [
+        // Products define the executables and libraries produced by a package, and make them visible to other packages.
+        .library(
+            name: "RxUserDefaults",
+            targets: ["RxUserDefaults"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.0.0"))
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "RxUserDefaults",
+            dependencies: ["RxSwift", "RxCocoa"],
+            path: "Sources"
+        ),
+        .testTarget(
+            name: "RxUserDefaultsTests",
+            dependencies: ["RxUserDefaults", "RxTest", "RxBlocking"],
+            path: "Tests"
+        ),
+    ],
+    swiftLanguageVersions: [.v5]
 )
